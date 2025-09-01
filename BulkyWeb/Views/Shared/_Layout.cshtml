@@ -58,6 +58,12 @@
                                 <a class="nav-link" asp-area="Admin" asp-controller="Course" asp-action="Index">Course</a>
                             </li>
                         }
+                        @if (User.IsInRole(SD.Role_Employee))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="Admin" asp-controller="LectureNote" asp-action="Index">Lecture Note</a>
+                            </li>
+                        }
                         @if (User.IsInRole(SD.Role_Admin))
                         {
                             <li class="nav-item dropdown">
