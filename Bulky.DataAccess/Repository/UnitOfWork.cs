@@ -21,6 +21,8 @@ namespace WMS.DataAccess.Repository
         public IGoodsDeliveryNoteRepository GoodsDeliveryNote { get; private set; }
         public IGoodsDeliveryNotePickNoteRepository GoodsDeliveryNotePickNote { get; private set; }
         public IInternalMoveRepository InternalMove { get; private set; }
+        public ICourseRepository Course { get; private set; }
+        public ILectureNoteRepository LectureNote { get; private set; }
         public UnitOfWork(ApplicationDbContext db)
         {
             _db = db;
@@ -39,6 +41,8 @@ namespace WMS.DataAccess.Repository
             GoodsDeliveryNote = new GoodsDeliveryNoteRepository(_db);
             GoodsDeliveryNotePickNote = new GoodsDeliveryNotePickNoteRepository(_db);
             InternalMove = new InternalMoveRepository(_db);
+            Course = new CourseRepository(_db);
+            LectureNote = new LectureNoteRepository(_db);
         }
         
         public void Save()

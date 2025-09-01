@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WMS.DataAccess.Data;
 
@@ -11,9 +12,11 @@ using WMS.DataAccess.Data;
 namespace WMS.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250901062356_AddCourseModel")]
+    partial class AddCourseModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -505,36 +508,6 @@ namespace WMS.DataAccess.Migrations
                     b.ToTable("InternalMove");
                 });
 
-            modelBuilder.Entity("WMS.Models.LectureNote", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int?>("CourseId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("DisplayOrder")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Note")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CourseId");
-
-                    b.ToTable("LectureNote");
-                });
-
             modelBuilder.Entity("WMS.Models.PickNote", b =>
                 {
                     b.Property<int>("Id")
@@ -904,15 +877,6 @@ namespace WMS.DataAccess.Migrations
                     b.Navigation("Product");
 
                     b.Navigation("RackLocation");
-                });
-
-            modelBuilder.Entity("WMS.Models.LectureNote", b =>
-                {
-                    b.HasOne("WMS.Models.Course", "Course")
-                        .WithMany()
-                        .HasForeignKey("CourseId");
-
-                    b.Navigation("Course");
                 });
 
             modelBuilder.Entity("WMS.Models.PickNoteRackLocation", b =>

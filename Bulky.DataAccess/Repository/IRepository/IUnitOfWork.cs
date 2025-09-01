@@ -17,6 +17,8 @@
         IGoodsDeliveryNoteRepository GoodsDeliveryNote { get; }
         IGoodsDeliveryNotePickNoteRepository GoodsDeliveryNotePickNote { get; }
         IInternalMoveRepository InternalMove { get; }
+        ICourseRepository Course { get; }
+        ILectureNoteRepository LectureNote { get; }
 
         void Save();
     }
