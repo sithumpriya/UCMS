@@ -30,6 +30,7 @@ namespace WMS.DataAccess.Data
         public DbSet<GoodsDeliveryNotePickNote> GoodsDeliveryNotePickNote { get; set; }
         public DbSet<InternalMove> InternalMove { get; set; }
         public DbSet<Course> Course { get; set; }
+        public DbSet<LectureNote> LectureNote { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
