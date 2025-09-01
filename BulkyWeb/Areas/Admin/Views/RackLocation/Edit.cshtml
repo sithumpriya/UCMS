@@ -1,0 +1,38 @@
+﻿@model RackLocation
+
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow border-0">
+                <div class="card-header bg-secondary bg-gradient text-white text-center py-3">
+                    <h2 class="mb-0">Edit Rack Location</h2>
+                </div>
+                <div class="card-body px-4">
+                    <form method="post">
+                        <input asp-for="Id" hidden />
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                        <div class="form-floating mb-4">
+                            <input asp-for="Code" class="form-control" placeholder="Code" readonly/>
+                            <label asp-for="Code">Code</label>
+                            <span asp-validation-for="Code" class="text-danger"></span>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4 mb-2">
+                                <button type="submit" class="btn btn-success w-100">Update</button>
+                            </div>
+                            <div class="col-md-4 mb-2">
+                                <a asp-controller="RackLocation" asp-action="Index" class="btn btn-outline-secondary w-100">Back to List</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

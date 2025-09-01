@@ -1,0 +1,63 @@
+﻿@using Newtonsoft.Json
+@model InternalMoveVM
+
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card shadow border-0">
+                <div class="card-header bg-secondary text-white text-center">
+                    <h3>Create Internal Move</h3>
+                </div>
+                <div class="card-body">
+                    <form method="post" asp-action="Create">
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                        <div class="mb-3">
+                            <label asp-for="InternalMove.Remark" class="form-label">Remark</label>
+                            <textarea asp-for="InternalMove.Remark" class="form-control"></textarea>
+                        </div>
+                        <hr />
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label asp-for="InternalMove.PreviousLocationId" class="form-label">Current Rack Location</label>
+                                <select asp-for="InternalMove.PreviousLocationId" class="form-select customer-select" asp-items="Model.UsedRackLocationList"></select>
+                                <span asp-validation-for="InternalMove.PreviousLocationId" class="text-danger"></span>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label asp-for="InternalMove.NewLocationId" class="form-label">New Rack Location</label>
+                                <select asp-for="InternalMove.NewLocationId" class="form-select customer-select" asp-items="Model.AvailableRackLocationList"></select>
+                                <span asp-validation-for="InternalMove.NewLocationId" class="text-danger"></span>
+                            </div>
+
+                            @* <div class="col-md-3"> *@
+                            @*     <label asp-for="InternalMove.ProductId" class="form-label">Product</label> *@
+                            @*     <input asp-for="InternalMove.ProductId" class="form-control" /> *@
+                            @*     <span asp-validation-for="InternalMove.ProductId" class="text-danger"></span> *@
+                            @* </div> *@
+
+                            @* <div class="col-md-3"> *@
+                            @*     <label asp-for="InternalMove.Quantity" class="form-label">Quantity</label> *@
+                            @*     <input asp-for="InternalMove.Quantity" class="form-control" /> *@
+                            @*     <span asp-validation-for="InternalMove.Quantity" class="text-danger"></span> *@
+                            @* </div> *@
+                        </div>                                 
+
+                        <div class="row mt-4">
+                            <div class="col-md-4">
+                                <button type="submit" class="btn btn-success w-100">Create Pick Note</button>
+                            </div>
+                            <div class="col-md-4">
+                                <a asp-action="Index" class="btn btn-outline-secondary w-100">Back to List</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

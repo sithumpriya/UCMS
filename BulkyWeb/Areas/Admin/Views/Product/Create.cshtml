@@ -1,0 +1,63 @@
+﻿@model Product
+
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card shadow border-0">
+                <div class="card-header bg-secondary bg-gradient text-white text-center py-3">
+                    <h2 class="mb-0">Create Product</h2>
+                </div>
+                <div class="card-body px-4">
+                    <form method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                        <div class="form-floating mb-4">
+                            <input asp-for="Name" class="form-control" placeholder="Product Name" />
+                            <label asp-for="Name">Product Name</label>
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-4">
+                            <label asp-for="Description" class="form-label fw-semibold">Description</label>
+                            <textarea asp-for="Description" class="form-control" rows="3" placeholder="Enter product description"></textarea>
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-4">
+                            <label asp-for="CategoryId" class="form-label fw-semibold">Category</label>
+                            <select asp-for="CategoryId" asp-items="ViewBag.CategoryList" class="form-select">
+                                <option value="">-- Select Category --</option>
+                            </select>
+                            <span asp-validation-for="CategoryId" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-floating mb-4">
+                            <input asp-for="OutBoundMethod" class="form-control" placeholder="OutBound Method" />
+                            <label asp-for="OutBoundMethod">OutBound Method</label>
+                            <span asp-validation-for="OutBoundMethod" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-floating mb-4">
+                            <input asp-for="UnitOfMeasure" class="form-control" placeholder="Unit of Measure" />
+                            <label asp-for="UnitOfMeasure">Unit of Measure</label>
+                            <span asp-validation-for="UnitOfMeasure" class="text-danger"></span>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-3 mb-2">
+                                <button type="submit" class="btn btn-success w-100">Create</button>
+                            </div>
+                            <div class="col-md-3 mb-2">
+                                <a asp-controller="Product" asp-action="Index" class="btn btn-outline-secondary w-100">Back to List</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

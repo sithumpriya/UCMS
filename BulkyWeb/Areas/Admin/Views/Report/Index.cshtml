@@ -1,0 +1,34 @@
+﻿@model ReportFilterVM
+@{
+    ViewData["Title"] = "Report Filters";
+}
+
+<h2 class="text-light mb-3">Report</h2>
+
+<form asp-action="ViewReport" method="post">
+    <div class="row mb-3">
+        <div class="col-md-6 mb-3 mb-md-0">
+            <label class="text-light">Report Type</label>
+            <select asp-for="SelectedReport" asp-items="Model.AvailableReports" class="form-control"></select>
+        </div>
+        <div class="col-md-6">
+            <label class="text-light">Customer</label>
+            <select asp-for="CustomerName" asp-items="Model.CustomerList" class="form-control">
+                <option value="">-- All Customers --</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-6 mb-3 mb-md-0">
+            <label class="text-light">From Date</label>
+            <input asp-for="FromDate" class="form-control" type="date" />
+        </div>
+        <div class="col-md-6">
+            <label class="text-light">To Date</label>
+            <input asp-for="ToDate" class="form-control" type="date" />
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">View Report</button>
+</form>

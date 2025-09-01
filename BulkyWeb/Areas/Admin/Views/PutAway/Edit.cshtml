@@ -1,0 +1,101 @@
+﻿@model GoodsReceivedNote
+@{
+    ViewData["Title"] = "View GRN";
+    var grnProducts = ViewBag.GRNProducts as IEnumerable<GoodsReceivedNoteProduct>;
+}
+
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card shadow border-0">
+                <div class="card-header bg-secondary text-white text-center">
+                    <h3>Goods Received Note Details</h3>
+                </div>
+                <div class="card-body">
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Customer</label>
+                            <input class="form-control" readonly value="@Model.Customer?.Name" />
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">Code</label>
+                            <input class="form-control" readonly value="@Model.Code" />
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">GRN Date</label>
+                            <input class="form-control" readonly value="@Model.GRNDate.ToString("yyyy-MM-dd HH:mm")" />
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <label class="form-label">Start Time</label>
+                            <input class="form-control" readonly value="@Model.StartTime.ToString("yyyy-MM-dd HH:mm")" />
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Finish Time</label>
+                            <input class="form-control" readonly value="@Model.FinishTime.ToString("yyyy-MM-dd HH:mm")" />
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Seal No</label>
+                            <input class="form-control" readonly value="@Model.SealNo" />
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <label class="form-label">Vehicle No</label>
+                            <input class="form-control" readonly value="@Model.VehicleNo" />
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Container No</label>
+                            <input class="form-control" readonly value="@Model.ContainerNo" />
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Trailor No</label>
+                            <input class="form-control" readonly value="@Model.TrailorNo" />
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Remark</label>
+                        <textarea class="form-control" readonly>@Model.Remark</textarea>
+                    </div>
+
+                    <hr />
+                    <h5>Products</h5>
+                    <table class="table table-bordered">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Product</th>
+                                <th>Rack Location</th>
+                                <th>Quantity</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (grnProducts != null)
+                            {
+                                foreach (var item in grnProducts)
+                                {
+                                    <tr>
+                                        <td>@item.Product.Name</td>
+                                        <td>@item.RackLocation.Code</td>
+                                        <td>@item.Quantity</td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+
+                    <div class="row mt-4">
+                        <div class="col-md-4 offset-md-4">
+                            <a asp-action="Index" class="btn btn-outline-secondary w-100">Back to List</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

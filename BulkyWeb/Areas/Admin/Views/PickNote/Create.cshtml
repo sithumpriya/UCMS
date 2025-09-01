@@ -1,0 +1,129 @@
+﻿@using Newtonsoft.Json
+@model PickNoteVM
+
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card shadow border-0">
+                <div class="card-header bg-secondary text-white text-center">
+                    <h3>Create Pick Note</h3>
+                </div>
+                <div class="card-body">
+                    <form method="post" asp-action="Create">
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label asp-for="PickNote.CustomerId" class="form-label">Select Customer</label>
+                                <select asp-for="PickNote.CustomerId" class="form-select customer-select" asp-items="Model.CustomerList"></select>
+                                <span asp-validation-for="PickNote.CustomerId" class="text-danger"></span>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label asp-for="PickNote.Code" class="form-label">Code</label>
+                                <input asp-for="PickNote.Code" class="form-control" />
+                                <span asp-validation-for="PickNote.Code" class="text-danger"></span>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label asp-for="PickNote.PNDate" class="form-label">PN Date</label>
+                                <input asp-for="PickNote.PNDate" class="form-control" type="datetime-local" />
+                                <span asp-validation-for="PickNote.PNDate" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="PickNote.Remark" class="form-label">Remark</label>
+                            <textarea asp-for="PickNote.Remark" class="form-control"></textarea>
+                        </div>
+
+                        <hr />
+
+                        <table class="table table-bordered" id="productTable">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Rack Location</th>
+                                    <th>Pick Quantity</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Rows will be dynamically added -->
+                            </tbody>
+                        </table>
+
+                        <div class="row mt-4">
+                            <div class="col-md-4">
+                                <button type="submit" class="btn btn-success w-100">Create Pick Note</button>
+                            </div>
+                            <div class="col-md-4">
+                                <a asp-action="Index" class="btn btn-outline-secondary w-100">Back to List</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        $(document).ready(function () {
+            $('.customer-select').select2();
+
+            $('.customer-select').on('change', function () {
+                const customerId = $(this).val();
+                if (!customerId) return;
+
+                $.ajax({
+                    url: '/admin/pickNote/GetRackLocationsByCustomer',
+                    type: 'GET',
+                    data: { customerId: customerId },
+                    success: function (data) {
+                        const tbody = $('#productTable tbody');
+                        tbody.empty();
+
+                        if (data.length === 0) {
+                            tbody.append('<tr><td colspan="4" class="text-center">No rack locations found for this customer.</td></tr>');
+                            return;
+                        }
+
+                        data.forEach((item, index) => {
+                            const row = `<tr>
+                                <td>
+                                    ${item.productName}
+                                    <input type="hidden" name="Products[${index}].ProductName" value="${item.productName}" />
+                                    <input type="hidden" name="Products[${index}].ProductId" value="${item.productId}" />
+                                </td>
+                                <td>
+                                    ${item.rackLocationCode}
+                                    <input type="hidden" name="Products[${index}].RackLocationCode" value="${item.rackLocationCode}" />
+                                    <input type="hidden" name="Products[${index}].RackLocationId" value="${item.rackLocationId}" />
+                                </td>
+                                <td>
+                                    <input type="number" name="Products[${index}].RequestQuantity" class="form-control" value="${item.availableQty}" min="1" max="${item.availableQty}" />
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-danger btn-sm remove-row">Remove</button>
+                                </td>
+                            </tr>`;
+                            tbody.append(row);
+                        });
+                    },
+                    error: function () {
+                        alert("Error loading rack locations.");
+                    }
+                });
+            });
+
+            // Optional: Remove row functionality
+            $('#productTable').on('click', '.remove-row', function () {
+                $(this).closest('tr').remove();
+            });
+        });
+    </script>
+}

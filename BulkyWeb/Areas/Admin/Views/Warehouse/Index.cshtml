@@ -1,0 +1,35 @@
+﻿@model List<Warehouse>
+
+<div class="card shadow border-0 mt-4 mb-5">
+	<div class="card-header bg-secondary bg-gradient m-lg-0 py-3">
+		<div class="row">
+			<div class="col-12 text-center">
+				<h2 class="text-white py-2">Warehouse List</h2>
+			</div>
+		</div>
+	</div>
+	<div class="card-body p-4">
+		<div class="row">
+
+			<div class="col-12 text-end">
+				<a asp-controller="Warehouse" asp-action="Create" class="btn btn-secondary">
+					<i class="bi bi-plus-circle"></i> Create New Warehouse
+				</a>
+			</div>
+		</div>
+
+		<table id="tblData" class="table table-bordered table-striped">
+			<thead>
+				<tr>
+					<th>Code</th>
+					<th>Name</th>
+					<th class="text-center">Action</th>
+				</tr>
+			</thead>			
+		</table>
+	</div>
+</div>
+
+@section Scripts {
+	<script src="~/js/warehouse.js"></script>
+}

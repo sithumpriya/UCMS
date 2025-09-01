@@ -1,0 +1,71 @@
+﻿@model PickNote
+@{
+    ViewData["Title"] = "View PickNote";
+    var pnProducts = ViewBag.PNProducts as IEnumerable<PickNoteRackLocation>;
+}
+
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card shadow border-0">
+                <div class="card-header bg-secondary text-white text-center">
+                    <h3>Goods Received Note Details</h3>
+                </div>
+                <div class="card-body">
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Customer</label>
+                            <input class="form-control" readonly value="@Model.CustomerName" />
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">Code</label>
+                            <input class="form-control" readonly value="@Model.Code" />
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">GRN Date</label>
+                            <input class="form-control" readonly value="@Model.PNDate.ToString("yyyy-MM-dd HH:mm")" />
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Remark</label>
+                        <textarea class="form-control" readonly>@Model.Remark</textarea>
+                    </div>
+
+                    <hr />
+                    <h5>Products</h5>
+                    <table class="table table-bordered">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Product</th>
+                                <th>Rack Location</th>
+                                <th>Pick Quantity</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (pnProducts != null)
+                            {
+                                foreach (var item in pnProducts)
+                                {
+                                    <tr>
+                                        <td>@item.ProductName</td>
+                                        <td>@item.RackLocationCode</td>
+                                        <td>@item.RequestQuantity</td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+
+                    <div class="row mt-4">
+                        <div class="col-md-4 offset-md-4">
+                            <a asp-action="Index" class="btn btn-outline-secondary w-100">Back to List</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
