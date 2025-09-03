@@ -19,6 +19,7 @@
         IInternalMoveRepository InternalMove { get; }
         ICourseRepository Course { get; }
         ILectureNoteRepository LectureNote { get; }
+        ICourseResultRepository CourseResult { get; }
 
         void Save();
     }

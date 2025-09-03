@@ -1,0 +1,37 @@
+﻿@model List<CourseResult>
+
+<div class="card shadow border-0 mt-4 mb-5">
+	<div class="card-header bg-secondary bg-gradient m-lg-0 py-3">
+		<div class="row">
+			<div class="col-12 text-center">
+				<h2 class="text-white py-2">Result List</h2>
+			</div>
+		</div>
+	</div>
+	<div class="card-body p-4">
+		<div class="row">
+
+			<div class="col-12 text-end">
+				<a asp-controller="CourseResult" asp-action="Create" class="btn btn-secondary">
+					<i class="bi bi-plus-circle"></i> Add New Result
+				</a>
+			</div>
+		</div>
+
+		<table id="tblData" class="table table-bordered table-striped">
+			<thead>
+				<tr>
+					<th>Student Code</th>
+					<th>Student Name</th>
+					<th>Course Name</th>
+					<th>Marks</th>
+					<th class="text-center">Action</th>
+				</tr>
+			</thead>
+		</table>
+	</div>
+</div>
+
+@section Scripts {
+	<script src="~/js/courseResult.js"></script>
+}
