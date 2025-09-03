@@ -1,5 +1,6 @@
 ﻿using WMS.DataAccess.Data;
 using WMS.DataAccess.Repository.IRepository;
+using WMS.Models;
 
 namespace WMS.DataAccess.Repository
 {
@@ -23,6 +24,7 @@ namespace WMS.DataAccess.Repository
         public IInternalMoveRepository InternalMove { get; private set; }
         public ICourseRepository Course { get; private set; }
         public ILectureNoteRepository LectureNote { get; private set; }
+        public ICourseResultRepository CourseResult { get; private set; }
         public UnitOfWork(ApplicationDbContext db)
         {
             _db = db;
@@ -43,6 +45,7 @@ namespace WMS.DataAccess.Repository
             InternalMove = new InternalMoveRepository(_db);
             Course = new CourseRepository(_db);
             LectureNote = new LectureNoteRepository(_db);
+            CourseResult = new CourseResultRepository(_db);
         }
         
         public void Save()
