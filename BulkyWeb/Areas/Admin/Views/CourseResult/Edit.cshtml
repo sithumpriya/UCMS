@@ -1,0 +1,58 @@
+﻿@model CourseResult
+
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow border-0">
+                <div class="card-header bg-secondary bg-gradient text-white text-center py-3">
+                    <h2 class="mb-0">Edit Result</h2>
+                </div>
+                <div class="card-body px-4">
+                    <form method="post">
+                        <input asp-for="Id" hidden />
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                        <<div class="mb-4">
+                            <label asp-for="CourseId" class="form-label fw-semibold">Course</label>
+                            <select asp-for="CourseId" asp-items="ViewBag.CourseList" class="form-select">
+                                <option disabled value="">-- Select Course --</option>
+                            </select>
+                            <span asp-validation-for="CourseId" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-floating mb-4">
+                            <input asp-for="StudentCode" class="form-control" placeholder="Student Code" />
+                            <label asp-for="StudentCode">Student Code</label>
+                            <span asp-validation-for="StudentCode" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-floating mb-4">
+                            <input asp-for="StudentName" class="form-control" placeholder="Student Name" />
+                            <label asp-for="StudentName">Student Name</label>
+                            <span asp-validation-for="StudentName" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-floating mb-4">
+                            <input asp-for="Marks" class="form-control" placeholder="Marks" />
+                            <label asp-for="Marks">Marks</label>
+                            <span asp-validation-for="Marks" class="text-danger"></span>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4 mb-2">
+                                <button type="submit" class="btn btn-success w-100">Update</button>
+                            </div>
+                            <div class="col-md-4 mb-2">
+                                <a asp-controller="CourseResult" asp-action="Index" class="btn btn-outline-secondary w-100">Back to List</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

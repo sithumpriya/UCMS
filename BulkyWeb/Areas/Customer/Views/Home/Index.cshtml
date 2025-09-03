@@ -18,31 +18,31 @@
                 <div class="col-md-3">
                     <div class="card shadow-sm border-0" style="background-color:#9eb7c8;">
                         <div class="card-body text-center">
-                            <h6 class="card-title text-muted">Total Inventory Products</h6>
+                            <h6 class="card-title text-muted">Total Notes</h6>
                             <h3 class="card-text fw-bold">@ViewBag.ProductCount</h3>
                         </div>
                     </div>
                 </div>
+                @* <div class="col-md-3"> *@
+                @*     <div class="card shadow-sm border-0" style="background-color:#9eb7c8;"> *@
+                @*         <div class="card-body text-center"> *@
+                @*             <h6 class="card-title text-muted">Pending Put Aways</h6> *@
+                @*             <h3 class="card-text fw-bold">@ViewBag.PendingPutAwayCount</h3> *@
+                @*         </div> *@
+                @*     </div> *@
+                @* </div> *@
+                @* <div class="col-md-3"> *@
+                @*     <div class="card shadow-sm border-0" style="background-color:#9eb7c8;"> *@
+                @*         <div class="card-body text-center"> *@
+                @*             <h6 class="card-title text-muted">Pending Pick Notes</h6> *@
+                @*             <h3 class="card-text fw-bold">@ViewBag.PendingPickNoteCount</h3> *@
+                @*         </div> *@
+                @*     </div> *@
+                @* </div> *@
                 <div class="col-md-3">
                     <div class="card shadow-sm border-0" style="background-color:#9eb7c8;">
                         <div class="card-body text-center">
-                            <h6 class="card-title text-muted">Pending Put Aways</h6>
-                            <h3 class="card-text fw-bold">@ViewBag.PendingPutAwayCount</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card shadow-sm border-0" style="background-color:#9eb7c8;">
-                        <div class="card-body text-center">
-                            <h6 class="card-title text-muted">Pending Pick Notes</h6>
-                            <h3 class="card-text fw-bold">@ViewBag.PendingPickNoteCount</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card shadow-sm border-0" style="background-color:#9eb7c8;">
-                        <div class="card-body text-center">
-                            <h6 class="card-title text-muted">Customers</h6>
+                            <h6 class="card-title text-muted">Total Courses</h6>
                             <h3 class="card-text fw-bold">@ViewBag.CustomerCount</h3>
                         </div>
                     </div>
@@ -51,34 +51,34 @@
         </div>
     </div>
 
-    <div class="card shadow border-0 mb-4">
-        <div class="card-body">
-            <div class="row">
-                <div class="col-md-6">
-                    <h5 class="mb-3">WEEKLY GRN</h5>
-                    <canvas id="weeklyGrnChart" height="100"></canvas>
-                </div>
-                <div class="col-md-6">
-                    <h5 class="mb-3">MONTHLY GRN</h5>
-                    <canvas id="monthlyGrnChart" height="100"></canvas>
-                </div>
-            </div>
-        </div>
-    </div>
+    @* <div class="card shadow border-0 mb-4"> *@
+    @*     <div class="card-body"> *@
+    @*         <div class="row"> *@
+    @*             <div class="col-md-6"> *@
+    @*                 <h5 class="mb-3">WEEKLY GRN</h5> *@
+    @*                 <canvas id="weeklyGrnChart" height="100"></canvas> *@
+    @*             </div> *@
+    @*             <div class="col-md-6"> *@
+    @*                 <h5 class="mb-3">MONTHLY GRN</h5> *@
+    @*                 <canvas id="monthlyGrnChart" height="100"></canvas> *@
+    @*             </div> *@
+    @*         </div> *@
+    @*     </div> *@
+    @* </div> *@
 
-    <div class="card shadow border-0 mb-4">
-        <div class="card-header bg-light">
-            <h5 class="mb-0">Quick Links</h5>
-        </div>
-        <div class="card-body">
-            <div class="d-flex flex-wrap gap-3">
-                <a asp-area="Admin" asp-controller="Product" asp-action="Index" class="btn btn-outline-primary">Manage Products</a>
-                <a asp-area="Admin" asp-controller="PutAway" asp-action="Index" class="btn btn-outline-success">View Put Aways</a>
-                <a asp-area="Admin" asp-controller="PickNote" asp-action="Index" class="btn btn-outline-warning">View PickNotes</a>
-                <a asp-area="Admin" asp-controller="Customer" asp-action="Index" class="btn btn-outline-info">Manage Customers</a>
-            </div>
-        </div>
-    </div>
+    @* <div class="card shadow border-0 mb-4"> *@
+    @*     <div class="card-header bg-light"> *@
+    @*         <h5 class="mb-0">Quick Links</h5> *@
+    @*     </div> *@
+    @*     <div class="card-body"> *@
+    @*         <div class="d-flex flex-wrap gap-3"> *@
+    @*             <a asp-area="Admin" asp-controller="Product" asp-action="Index" class="btn btn-outline-primary">Manage Products</a> *@
+    @*             <a asp-area="Admin" asp-controller="PutAway" asp-action="Index" class="btn btn-outline-success">View Put Aways</a> *@
+    @*             <a asp-area="Admin" asp-controller="PickNote" asp-action="Index" class="btn btn-outline-warning">View PickNotes</a> *@
+    @*             <a asp-area="Admin" asp-controller="Customer" asp-action="Index" class="btn btn-outline-info">Manage Customers</a> *@
+    @*         </div> *@
+    @*     </div> *@
+    @* </div> *@
 
 </div>
 
