@@ -23,10 +23,10 @@ namespace WMSWeb.Areas.Customer.Controllers
 
         public IActionResult Index()
         {
-            var products = _unitOfWork.Product.GetAll();
+            var products = _unitOfWork.LectureNote.GetAll();
             ViewBag.ProductCount = products != null ? products.Count() : 0;
 
-            var customers = _unitOfWork.Customer.GetAll();
+            var customers = _unitOfWork.Course.GetAll();
             ViewBag.CustomerCount = customers != null ? customers.Count() : 0;
 
             var pickNotes = _unitOfWork.PickNote.GetAll(x => x.Status == "Pending");
